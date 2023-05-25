@@ -1,0 +1,129 @@
+---
+title: "Class 09: PDB"
+author: "Loreen A17059289"
+format: html
+---
+
+# PDB Statistics:
+
+The PDB is the main database for structural information on biomolecules. 
+
+```{r}
+db <- read.csv("Data Export Summary.csv", row.names = 1)
+db
+```
+
+> Q1: What percentage of structures in the PDB are solved by X-Ray and Electron Microscopy.
+
+```{r}
+xray.total <- sum(as.numeric(gsub(",", "", db$X.ray)))
+em.total <- sum(as.numeric(gsub(",", "", db$EM)))
+em.total
+xray.total
+```
+
+Write a function to get rid of repetitive code:
+
+```{r}
+# x is the input. 
+sum_comma <- function(x) {
+  # Substitute the comma and covert to numeric. 
+  sum(as.numeric(gsub(",", "", x)))
+}
+
+sum_comma(db$X.ray)
+sum_comma(db$EM)
+sum_comma(db$Total)
+```
+
+For Xray:
+```{r}
+sum_comma(db$X.ray) / sum_comma(db$Total)
+```
+
+For EM:
+```{r}
+sum_comma(db$EM) / sum_comma(db$Total)
+```
+
+> Q2: What proportion of structures in the PDB are protein?
+
+```{r}
+round(sum_comma(db$Total[1]) / sum_comma(db$Total), 2)
+```
+
+> Q3: Type HIV in the PDB website search box on the home page and determine how many HIV-1 protease structures are in the current PDB?
+
+skip
+
+# Visualizing the HIV-1 protease structure:
+
+> Q6.
+![HIV-PR structure from MERK with a bound drug](1HSG-2.png)
+
+
+> Q4: Water molecules normally have 3 atoms. Why do we see just one atom per water molecule in this structure?
+
+This structure is too low a resolution to see H atoms. You need a sub Angstrom resolution to see Hydrogen.
+
+> Q5: There is a critical “conserved” water molecule in the binding site. Can you identify this water molecule? What residue number does this water molecule have?
+
+HOH308
+
+# Working with Structures in R
+
+We can use the `bio3d` package to read and perform bioinformatics calculations on PDB structures. 
+
+```{r}
+library(bio3d)
+
+pdb <- read.pdb("1hsg")
+pdb
+```
+
+```{r}
+attributes(pdb)
+```
+```{r}
+head(pdb$atom)
+```
+
+Read an ADK structure:
+
+```{r}
+adk <- read.pdb("6s36")
+adk
+```
+
+Perform a prediction of flexibility with a technique called NMA(normal code analysis):
+
+```{r}
+# Perform flexibility prediction
+m <- nma(adk)
+plot(m)
+```
+
+Write out. "movie" (a.k.a trajectory) of the motion for viewing in M0lstar:
+
+```{r}
+mktrj(m, file="adk_m7.pdb")
+```
+
+> Q7: How many amino acid residues are there in this pdb object? 
+
+198
+
+> Q8: Name one of the two non-protein residues? 
+
+HOH
+
+> Q9: How many protein chains are in this structure? 
+
+2
+
+
+
+
+
+
+
