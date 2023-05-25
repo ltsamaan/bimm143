@@ -1,0 +1,67 @@
+---
+title: "Class 5: Data Visualization"
+author: "Loreen A17059289"
+format: html
+---
+
+## Base R graphics vs ggplot2
+
+There are many graphics systems available in R, including so-called "base" R graphics and the very popular **ggplot2 package**.
+
+To compare these let's play with the inbuilt `cars` dataset. 
+
+```{r}
+head(cars)
+```
+To use "base" R I can simply call the `plot()` function:
+
+```{r}
+plot(cars)
+```
+
+To use `ggplot2` package I first need to install it with the function `install.packages("ggplot2")`.
+
+I will run this in my R console (the R brain) as I don't want to re-install it every time I render my report. 
+
+The main function in this package is called `ggplot()`. Can I just call it
+
+```{r}
+library(ggplot2)
+ggplot()
+```
+To make a figure with ggplot I need always at least three things:
+
+- **data** (what I want to plot)
+- **aes** the aesthetic mapping of the data to the plot I want
+- the **geoms** (How I want to plot the data)
+
+```{r}
+ggplot(data=cars) +
+  aes(x=speed, y=dist) +
+  geom_point() 
+```
+
+If I want to add more stuff I can just keep adding layers:
+
+```{r}
+ggplot(data=cars) +
+  aes(x=speed, y=dist) +
+  geom_point() +
+  geom_smooth()
+```
+
+ggplot is much more verbose than base R plots for standard plots but it has a consistent layer system that I can use to make just about any plot.
+
+Making the line straight and removing outline/highlight:
+
+```{r}
+ggplot(data=cars) +
+  aes(x=speed, y=dist) +
+  geom_point() +
+  geom_smooth(se=FALSE, method="lm") +
+  labs(title = "Cars", caption = "This is my graph!", subtitle="From the inbuilt cars dataset:", x="Speed", y="Distance") +
+  theme_bw()
+```
+
+
+
