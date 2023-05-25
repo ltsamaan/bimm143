@@ -1,2 +1,2 @@
 # bimm143
-My Bioinformatics work from UCSD (Spring23).
+My Bioinformatics work from UC San Diego (Spring23).
