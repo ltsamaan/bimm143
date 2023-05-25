@@ -1,2 +1,2 @@
 # bimm143
-My Bioinformatics work.
+My Bioinformatics work from UCSD (Spring23).
