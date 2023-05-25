@@ -1,0 +1,178 @@
+---
+title: "Class 7: Clustering and PCA"
+author: "Loreen A17059289"
+format: html
+---
+
+# Clustering
+
+First, let's make up some data to cluster so we can get a feel for these methods 
+and how to work with them. 
+
+We can use the `rnorm()` function to get random numbers from a normal distribution around a given `mean`. 
+```{r}
+hist(rnorm(5000, mean = 3))
+```
+
+Let's get 30 points with a mean of 3. 
+```{r}
+tmp <- c(rnorm(30, mean = 3), rnorm(30, mean = -3))
+tmp
+```
+Trying `rev()`:
+```{r}
+rev(c(1, 2, 3, 4, 5))
+cbind(c(1, 2, 3, 4, 5), rev(c(1,2,3,4,5)))
+```
+Putting two together(code above the one above this):
+```{r}
+x <- cbind(x=tmp, y=rev(tmp))
+plot(x)
+```
+
+## K-means clustering.
+
+Very popular clustering method that we can use with the `kmeans()` function in 
+base R.
+```{r}
+# 2 clusters:
+# Cluster vector says which cluster they belong to. 
+# Available components is the stuff needed to work with this answer. 
+km <- kmeans(x, centers = 2)
+km
+```
+```{r}
+# Questions:
+#Cluster size:
+km$size
+#Cluster assignment/membership:
+km$cluster
+km$centers
+```
+> Q. Plot x colored by the kmeans cluster assignment and add cluster centers as 
+blue points
+
+```{r}
+mycols <- c(1, 5)
+# col=km$cluster will split them into two colors
+plot(x, col=km$cluster)
+points(km$centers, col="blue", pch=15, cex=3)
+```
+
+> Q. Let's cluster into 3 groups or some `x` data and make a plot.
+
+```{r}
+km <- kmeans(x, centers = 3)
+plot(x, col=km$cluster)
+```
+
+# Hierarchical Clustering
+
+We can use the `hcluster()` function for Hierarchical Clustering.
+Unlike `kmeans()`, where we could just pass in our data as input, we need to
+give `hclust()` a "distance matrix".
+
+We will use the `dist()` function to start with:
+```{r}
+d <- dist(x)
+hc <- hclust(d)
+hc
+```
+```{r}
+plot(hc)
+```
+
+I can now "cut" my tree with the `cutree()` to yield a cluster membership vector.
+```{r}
+grps <- cutree(hc, h=12)
+plot(x, col=grps)
+```
+
+You can also tell `cutree()` to cut where it yields "k" groups.
+```{r}
+cutree(hc, k=2)
+```
+
+# Principal Component Analysis (PCA)
+
+```{r}
+url <- "https://tinyurl.com/UK-foods"
+x <- read.csv(url)
+x
+```
+
+> Q1. How many rows and columns are in your new data frame named x? What R functions could you use to answer this questions?
+
+```{r}
+# Or you can use `dim()`:
+dim(x)
+```
+
+Using `head()`:
+```{r}
+head(x)
+```
+Fixing it to get 4 cols, not 5:
+```{r}
+rownames(x) <- x[,1]
+x <- x[,-1]
+head(x)
+```
+Checking if this worked: It did!
+```{r}
+nrow(x)
+ncol(x)
+```
+
+2nd Approach to get 4 cols:
+```{r}
+x <- read.csv(url, row.names=1)
+head(x)
+nrow(x)
+ncol(x)
+```
+
+> Q2. Which approach to solving the ‘row-names problem’ mentioned above do you prefer and why? Is one approach more robust than another under certain circumstances?
+
+I prefer the 2nd approach using (x <- read.csv(url, row.names=1)) because the first approach keeps deleting each column after every time you run it. We don't want to keep losing the columns, we just wanted to remove 1 of them. 
+
+
+```{r}
+barplot(as.matrix(x), beside=T, col=rainbow(nrow(x)))
+```
+> Q3: Changing what optional argument in the above barplot() function results in the following plot?
+
+```{r}
+barplot(as.matrix(x), beside=FALSE, col=rainbow(nrow(x)))
+```
+> Q5: Generating all pairwise plots may help somewhat. Can you make sense of the following code and resulting figure? What does it mean if a given point lies on the diagonal for a given plot?
+
+The values are equal/similar to one another if they lie on the diagonal for a given plot. 
+
+```{r}
+pairs(x, col=rainbow(10), pch=16)
+```
+
+> Q6. What is the main differences between N. Ireland and the other countries of the UK in terms of this data-set?
+
+The other countries form a nicer line while N.Ireland has more wiggle. 
+The blue point is below the diagonal so it is consumed more in N.Ireland. 
+
+# PCA
+
+```{r}
+pca <- prcomp( t(x) )
+summary(pca)
+```
+> Q7. Complete the code below to generate a plot of PC1 vs PC2. The second line adds text labels over the data points.
+
+The main PCA function in base R is called `prcomp()` it expects the transpose of our data. 
+
+> Q8.
+
+```{r}
+plot(pca$x[,1], pca$x[,2], xlab="PC1", ylab="PC2", xlim=c(-270,500))
+text(pca$x[,1], pca$x[,2], colnames(x), col=c("orange", "red", "blue", "darkgreen"))
+```
+
+
