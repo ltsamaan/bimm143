@@ -1,5 +1,5 @@
 # Loreen Thamir Samaan
-My Bioinformatics work from UC San Diego (Spring23).
+Some of my Bioinformatics work from UC San Diego (Spring23).
 
 From class [BIMM143](https://bioboot.github.io/bimm143_S23/)
 
@@ -19,14 +19,14 @@ From class [BIMM143](https://bioboot.github.io/bimm143_S23/)
   * [Source Code](https://github.com/ltsamaan/bimm143/blob/main/class010/class10.qmd)
   * [PDF Report](https://github.com/ltsamaan/bimm143/blob/main/class010/Class%2010%20%3A%20Comparative%20structure%20analysis%20of%20Adenylate%20Kinase.pdf)
 
-* Class 11: **Genome informatics and high throughput sequencing** 
+* Class 11: **Genome Informatics and High Throughput Sequencing** 
   * [Source Code](https://github.com/ltsamaan/bimm143/blob/main/class11/class11.qmd)
   * [PDF Report](https://github.com/ltsamaan/bimm143/blob/main/class11/class11%20%3A%20Candy%20Mini-project.pdf)
 
-* Class 12: **Transcriptomics, RNA-Seq analysis, and the interpretation of gene lists** 
+* Class 12: **Transcriptomics, RNA-Seq Analysis, and the Interpretation of Gene Lists** 
   * [Source Code](https://github.com/ltsamaan/bimm143/blob/main/class12/class12.qmd)
   * [PDF Report](https://github.com/ltsamaan/bimm143/blob/main/class12/Class%2012%20%3A%20Transcriptomics%20and%20the%20analysis%20of%20RNA-Seq%20data.pdf)
 
-* Class 13: **RNA-Seq mini project** 
+* Class 13: **RNA-Seq Mini Project** 
   * [Source Code](https://github.com/ltsamaan/bimm143/blob/main/class13/class13.qmd)
   * [PDF Report](https://github.com/ltsamaan/bimm143/blob/main/class13/Class%2013%20%3A%20Pathway%20Analysis%20from%20RNA-Seq%20Results.pdf)
