@@ -11,19 +11,19 @@ From class [BIMM143](https://bioboot.github.io/bimm143_S23/)
   * [Source Code](https://github.com/ltsamaan/bimm143/blob/main/class07/class07.qmd)
   * [PDF Report](https://github.com/ltsamaan/bimm143/blob/main/class05/Class%207%3A%20Clustering%20and%20PCA.pdf)
 
-* Class 9: **Structural Bioinformatics (pt1) ** 
+* Class 9: **Structural Bioinformatics (pt1)** 
   * [Source Code](https://github.com/ltsamaan/bimm143/blob/main/class09/class09.qmd)
   * [PDF Report](https://github.com/ltsamaan/bimm143/blob/main/class09/Class%2009%3A%20PDB.pdf)
 
-* Class 10: **Structural Bioinformatics (pt2 AlphaFold) ** 
+* Class 10: **Structural Bioinformatics (pt2 AlphaFold)** 
   * [Source Code](https://github.com/ltsamaan/bimm143/blob/main/class010/class10.qmd)
   * [PDF Report](https://github.com/ltsamaan/bimm143/blob/main/class010/Class%2010%20%3A%20Comparative%20structure%20analysis%20of%20Adenylate%20Kinase.pdf)
 
-* Class 11: **Genome informatics and high throughput sequencing ** 
+* Class 11: **Genome informatics and high throughput sequencing** 
   * [Source Code](https://github.com/ltsamaan/bimm143/blob/main/class11/class11.qmd)
   * [PDF Report](https://github.com/ltsamaan/bimm143/blob/main/class11/class11%20%3A%20Candy%20Mini-project.pdf)
 
-* Class 12: **Transcriptomics, RNA-Seq analysis, and the interpretation of gene lists ** 
+* Class 12: **Transcriptomics, RNA-Seq analysis, and the interpretation of gene lists** 
   * [Source Code](https://github.com/ltsamaan/bimm143/blob/main/class12/class12.qmd)
   * [PDF Report](https://github.com/ltsamaan/bimm143/blob/main/class12/Class%2012%20%3A%20Transcriptomics%20and%20the%20analysis%20of%20RNA-Seq%20data.pdf)
 
